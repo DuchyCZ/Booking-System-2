@@ -1,0 +1,29 @@
+body {
+	text-align: center;
+	background-image: url("../Images/Sunrise.jpg");
+	background-attachment: fixed;
+	background-size: cover;
+	font-family: "Lucida Sans Unicode", "Lucida Grande", sans-serif;
+}
+
+.container {
+	position: absolute;
+	left: 50%;
+	top: 50%;
+	transform: translate(-50%, -50%);
+
+	/*background-color: rgba(255, 172, 4, 0.3);*/
+	background-color: rgba(0, 0, 0, 0.4);
+	padding: 25px;
+	color: white;
+	text-align: center;
+	box-shadow: 0 0 30px rgba(0, 0, 0, 0.7);
+}
+
+.right {
+	float: right;
+}
+
+.left{
+	float: left;
+}

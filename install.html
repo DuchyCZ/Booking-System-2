@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html>
+  <head>
+		<meta charset="UTF-8" />
+		<link rel="stylesheet" href="http://yui.yahooapis.com/pure/0.5.0/pure-min.css" />
+		<link rel="stylesheet" type="text/css" href="Styles/style.css">
+		<title>Booking System v2 - Instalace</title>
+		<script>
+			function dalsiKrok(elementID1, elementID2)
+			{
+				document.getElementById(elementID2).style.display = 'block';
+				document.getElementById(elementID1).style.display = 'none';			
+			}
+			
+			function predchoziKrok(elementID1, elementID2)
+			{
+				document.getElementById(elementID2).style.display = 'block';
+				document.getElementById(elementID1).style.display = 'none';			
+			}
+		</script>
+	</head>
+	<body> 
+		<div id="kroktext1" class="container">
+			<p id="text">Vítejte v instalaci Booking Systému.<br>
+			Pro pokračovnání stiskněte tlačítko "Začít".<br><br></p>
+			<div class="right">
+				<button class="pure-button" onclick="dalsiKrok('kroktext1','kroktext2')" >Začít</button>
+			</div>
+			<div class="left">
+				<a class="pure-button" href="https://www.google.cz/">Pryč</a>
+			</div>
+		</div>
+		
+		<div id="kroktext2" class="container" style="display:none">
+			<div class="left">Zadejte počet kurtů: </div>
+			<div class="right"><input id="kurty" type="text" maxlength="2" size="2"></div><br>
+			<div class="left">Zadejte rozmezí hodin provozu:&nbsp &nbsp &nbsp &nbsp</div>
+			<div class="right"><input id="hodiny" type="text" maxlength="2" size="2"> - <input type="text" maxlength="2" size="2"></div>		
+			<br><br><br><div class="right">
+				<button class="pure-button" onclick="dalsiKrok('kroktext2','kroktext3')" >Další</button>
+			</div>
+			<div class="left">
+				<button class="pure-button" onclick="predchoziKrok('kroktext2','kroktext1')" >Zpět</button>
+			</div>
+		</div>
+		
+		<div id="kroktext3" class="container" style="display:none">
+			<p id="text">Zadejte počet kurtů2: </p>
+			<div class="right">
+				<button class="pure-button" onclick="dalsiKrok('kroktext3','kroktext4')" >Další</button>
+			</div>
+			<div class="left">
+				<button class="pure-button" onclick="predchoziKrok('kroktext3','kroktext2')" >Zpět</button>
+			</div>
+		</div>
+	</body>
+</html>

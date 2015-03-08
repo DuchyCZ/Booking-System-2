@@ -23,9 +23,9 @@
 			<div class="left">Zadejte počet kurtů: </div>
 			<div class="right"><input id="kurty" type="text" maxlength="2" size="2"></div><br>
 			<div class="left">Zadejte rozmezí hodin provozu:&nbsp &nbsp &nbsp &nbsp</div>
-			<div class="right"><input id="hodiny" type="text" maxlength="2" size="2"> - <input type="text" maxlength="2" size="2"></div>		
+			<div class="right"><input id="hodiny" type="text" maxlength="2" size="2"> - <input id="hodiny2" type="text" maxlength="2" size="2"></div>		
 			<br><br><br><div class="right">
-				<button class="pure-button" onclick="dalsiKrok('kroktext2','kroktext3')" >Další</button>
+				<button class="pure-button" onclick="dalsiKrokKontrola1('kroktext2','kroktext3','kurty','hodiny','hodiny2')" >Další</button>
 			</div>
 			<div class="left">
 				<button class="pure-button" onclick="predchoziKrok('kroktext2','kroktext1')" >Zpět</button>
@@ -35,7 +35,7 @@
 		<div id="kroktext3" class="container" style="display:none">
 			<p id="text">Zadejte počet kurtů2: </p>
 			<div class="right">
-				<button class="pure-button" onclick="dalsiKrok('kroktext3','kroktext4')" >Další</button>
+				<button class="pure-button" onclick="dalsiKrokKontrola('kroktext2','kroktext3','kurty')" >Další</button>
 			</div>
 			<div class="left">
 				<button class="pure-button" onclick="predchoziKrok('kroktext3','kroktext2')" >Zpět</button>

@@ -4,6 +4,7 @@
 		<meta charset="UTF-8" />
 		<link rel="stylesheet" href="http://yui.yahooapis.com/pure/0.5.0/pure-min.css" />
 		<link rel="stylesheet" type="text/css" href="Styles/style.css">
+		<script type="application/javascript" src="Scripts/jquery-2.1.3.js"></script>
 		<script src="Scripts/install.js"></script>
 		<title>Booking System v2 - Instalace</title>
 	</head>
@@ -12,7 +13,7 @@
 			<p id="text">Vítejte v instalaci Booking Systému.<br>
 			Pro pokračovnání stiskněte tlačítko "Začít".<br><br></p>
 			<div class="right">
-				<button class="pure-button" onclick="dalsiKrok('kroktext1','kroktext2')" >Začít</button>
+				<button class="button-next pure-button" onclick="dalsiKrok()" >Začít</button>
 			</div>
 			<div class="left">
 				<a class="pure-button" href="https://www.google.cz/">Pryč</a>
@@ -21,11 +22,11 @@
 		
 		<div id="kroktext2" class="container" style="display:none">
 			<div class="left">Zadejte počet kurtů: </div>
-			<div class="right"><input id="kurty" type="text" maxlength="2" size="2"></div><br>
-			<div class="left">Zadejte rozmezí hodin provozu:&nbsp &nbsp &nbsp &nbsp</div>
-			<div class="right"><input id="hodiny" type="text" maxlength="2" size="2"> - <input id="hodiny2" type="text" maxlength="2" size="2"></div>		
+			<div class="right"><input id="kurty" type="text" maxlength="2" size="2">&nbsp;&nbsp;<img id="statusk" src="" style="width:22px; height:22px; display:none"></div><br>
+			<div class="left">Zadejte rozmezí hodin provozu:&nbsp; &nbsp; &nbsp; &nbsp;</div>
+			<div class="right"><input id="hodiny" type="text" maxlength="2" size="2"> - <input id="hodiny2" type="text" maxlength="2" size="2">&nbsp;&nbsp;<img id="statush" src="" style="width:22px; height:22px; display:none"></div>		
 			<br><br><br><div class="right">
-				<button class="pure-button" onclick="dalsiKrokKontrola1('kroktext2','kroktext3','kurty','hodiny','hodiny2')" >Další</button>
+				<button class="button-next pure-button" onclick="dalsiKrokKontrola1()" >Další</button>
 			</div>
 			<div class="left">
 				<button class="pure-button" onclick="predchoziKrok('kroktext2','kroktext1')" >Zpět</button>
@@ -33,9 +34,9 @@
 		</div>
 		
 		<div id="kroktext3" class="container" style="display:none">
-			<p id="text">Zadejte počet kurtů2: </p>
+			<p id="text2">Zadejte počet kurtů2: </p>
 			<div class="right">
-				<button class="pure-button" onclick="dalsiKrokKontrola('kroktext2','kroktext3','kurty')" >Další</button>
+				<button class="button-next pure-button" onclick="dalsiKrokKontrola2()" >Další</button>
 			</div>
 			<div class="left">
 				<button class="pure-button" onclick="predchoziKrok('kroktext3','kroktext2')" >Zpět</button>

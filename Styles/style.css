@@ -35,6 +35,17 @@ body {
 	background: rgb(255,165,0);
 }
 
+.tooltip {
+	display: none;
+	position: absolute;
+	border: 1px solid black;
+	background-color: rgba(0, 0, 0, 0.8);
+	padding: 10px;
+	color: rgb(255,165,0);
+	box-shadow: 0 0 30px rgba(0, 0, 0, 0.7);
+	font-size: 11px;
+}
+
 /*input	{
 	-webkit-transition: all 0.30s ease-in-out;
 	-moz-transition: all 0.30s ease-in-out;

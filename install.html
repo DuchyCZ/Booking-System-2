@@ -6,9 +6,10 @@
 		<link rel="stylesheet" type="text/css" href="Styles/style.css">
 		<script type="application/javascript" src="Scripts/jquery-2.1.3.js"></script>
 		<script src="Scripts/install.js"></script>
+		<script src="Scripts/tooltip.js"></script>
 		<title>Booking System v2 - Instalace</title>
 	</head>
-	<body> 
+	<body>
 		<div id="kroktext1" class="container">
 			<p id="text">Vítejte v instalaci Booking Systému.<br>
 			Pro pokračovnání stiskněte tlačítko "Začít".<br><br></p>
@@ -22,9 +23,9 @@
 		
 		<div id="kroktext2" class="container" style="display:none">
 			<div class="left">Zadejte počet kurtů: </div>
-			<div class="right"><input id="kurty" type="text" maxlength="2" size="2">&nbsp;&nbsp;<img id="statusk" src="" style="width:22px; height:22px; display:none"></div><br>
+			<div class="right"><input id="kurty" type="text" maxlength="2" size="2" title="Zadejte rozmezí od 1 do 99" class="masterTooltip">&nbsp;&nbsp;<img id="statusk" src="" style="width:22px; height:22px; display:none"></div><br>
 			<div class="left">Zadejte rozmezí hodin provozu:&nbsp; &nbsp; &nbsp; &nbsp;</div>
-			<div class="right"><input id="hodiny" type="text" maxlength="2" size="2"> - <input id="hodiny2" type="text" maxlength="2" size="2">&nbsp;&nbsp;<img id="statush" src="" style="width:22px; height:22px; display:none"></div>		
+			<div class="right"><input id="hodiny" type="text" maxlength="2" size="2" title="Zadejte rozmezí od 00 do 24" class="masterTooltip"> - <input id="hodiny2" type="text" maxlength="2" size="2" title="Zadejte rozmezí od 00 do 24" class="masterTooltip">&nbsp;&nbsp;<img id="statush" src="" style="width:22px; height:22px; display:none"></div>		
 			<br><br><br><div class="right">
 				<button class="button-next pure-button" onclick="dalsiKrokKontrola1()" >Další</button>
 			</div>

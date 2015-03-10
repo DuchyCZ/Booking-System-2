@@ -1,6 +1,26 @@
 $(document).ready(function(){ 
 	/*$("#kroktext1").toggle(2000);
 	$("#kroktext1").toggle(2000);*/ 
+	
+	$("#kurty")
+		.focusout(function() {
+			if ($("#kurty").val() != "0" && $("#kurty").val() != "")
+			{
+				$('.tkurtyo').remove();
+				$('.tkurty').remove();
+				var p = $("#kurty").offset();		
+				neerror("OK", p.top - $("#kurty").height() / 2, p.left + $("#kurty").width(), "tkurtyo");	
+				document.getElementById("kurty").style.borderColor='#009900';
+			}	
+			else
+			{
+				$('.tkurtyo').remove();
+				$('.tkurty').remove();
+				var p = $("#kurty").offset();		
+				error("Parametr musí být vyplněn!", p.top - $("#kurty").height() / 2, p.left + $("#kurty").width(), "tkurty");
+				document.getElementById("kurty").style.borderColor='#FF0000';
+			}
+	  })
 });
 
 function error(text, px, py, id)
@@ -9,9 +29,18 @@ function error(text, px, py, id)
 	.text(text)
 	.appendTo('body')
 	.fadeIn('slow')
-	.css({ position: 'absolute', top: px, left: py, "border": "1px solid black", "background-color": "rgba(0, 0, 0, 0.8)", "padding": "10px", "color": "rgb(255,165,0)", "box-shadow": "0 0 30px rgba(0, 0, 0, 0.7)", "font-size": "11px"})
+	.css({ position: 'absolute', top: px - 4, left: py + 10, "border": "1px solid black", "background-color": "rgba(0, 0, 0, 0.8)", "padding": "5px", "color": "rgb(255,165,0)", "box-shadow": "0 0 30px rgba(0, 0, 0, 0.7)", "font-size": "10px"})
 	.delay(3000)
 	.fadeOut('slow');
+}
+
+function neerror(text, px, py, id)
+{
+	$('<p class="'+ id +'"></p>')
+	.text(text)
+	.appendTo('body')
+	.fadeIn('slow')
+	.css({ position: 'absolute', top: px - 4, left: py + 10, "border": "1px solid black", "background-color": "rgba(0, 0, 0, 0.8)", "padding": "5px", "color": "rgb(0,153,0)", "box-shadow": "0 0 30px rgba(0, 0, 0, 0.7)", "font-size": "10px"})
 }
 
 function dalsiKrok()
@@ -24,34 +53,23 @@ function dalsiKrokKontrola1()
 {
 	if (document.getElementById("kurty").value == "" || document.getElementById("kurty").value == 0)
 	{	
-		/*document.getElementById("kurty").style.borderColor='#FF0000';	*/
-		if (document.getElementById("kurty").value == 0)
-		{
-			document.getElementById("kurty").value = "";
-		}
+		document.getElementById("kurty").style.borderColor='#FF0000';
 		
+		$('.tkurty').remove();
 		var p = $("#kurty").offset();		
-		error("Parametr musí být vyplněn!", p.top, p.left + $("#kurty").width() / 2, "tkurty");		
+		error("Parametr musí být vyplněn!", p.top - $("#kurty").height() / 2, p.left + $("#kurty").width(), "tkurty");		
 	}
-	else document.getElementById("kurty").style.borderColor='#04B404';
 	
-	if (document.getElementById("hodiny").value == "")
-	{
-		/*document.getElementById("hodiny").style.borderColor='#FF0000';	*/
-		
-		var p2 = $("#hodiny").offset();		
-		error("Parametr musí být vyplněn!", p2.top, p2.left + $("#hodiny").width() / 2, "thodiny");			
-	}
-	else document.getElementById("hodiny").style.borderColor='#04B404';
+	if (document.getElementById("hodiny").value == "") document.getElementById("hodiny").style.borderColor='#FF0000';
 	
-	if (document.getElementById("hodiny2").value == "")
+	if (document.getElementById("hodiny2").value == "" || document.getElementById("hodiny").value == "")
 	{
-		/*document.getElementById("hodiny2").style.borderColor='#FF0000';*/
+		document.getElementById("hodiny2").style.borderColor='#FF0000';
 		
+		$('.thodiny2').remove();
 		var p3 = $("#hodiny2").offset();		
-		error("Parametr musí být vyplněn!", p3.top, p3.left + $("#hodiny2").width() / 2, "thodiny2");	
+		error("Parametr musí být vyplněn!", p3.top - $("#hodiny2").height() / 2, p3.left + $("#hodiny2").width(), "thodiny2");	
 	}
-	else document.getElementById("hodiny2").style.borderColor='#04B404';
 	
 	if (document.getElementById("kurty").value != "" && document.getElementById("hodiny").value != "" && document.getElementById("hodiny2").value != "")
 	{

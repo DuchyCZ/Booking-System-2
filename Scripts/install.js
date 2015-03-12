@@ -24,7 +24,37 @@ $(document).ready(function(){
 	  
 	$("#hodiny2")
 		.focusout(function() {
-			if ($("#hodiny").val() != "" && $("#hodiny2").val() != "")
+			if ($("#hodiny").val() == "" && $("#hodiny2").val() == "")
+			{
+				$('.hodiny2o').remove();
+				$('.hodiny2').remove();
+				var p = $("#hodiny2").offset();		
+				tooltipError("Parametr musí být vyplněn!", p.top - $("#hodiny2").height() / 2, p.left + $("#hodiny2").width(), "hodiny2");
+				document.getElementById("hodiny2").style.borderColor='#FF0000';
+				document.getElementById("hodiny").style.borderColor='#FF0000';
+			}
+				
+			else if ($("#hodiny").val() >= $("#hodiny2").val())
+			{
+				$('.hodiny2o').remove();
+				$('.hodiny2').remove();
+				var p = $("#hodiny2").offset();		
+				tooltipError("Parametr musí být vyplněn!", p.top - $("#hodiny2").height() / 2, p.left + $("#hodiny2").width(), "hodiny2");
+				document.getElementById("hodiny2").style.borderColor='#FF0000';
+				document.getElementById("hodiny").style.borderColor='#FF0000';
+			}
+			
+			else if ($("#hodiny").val() == "" || $("#hodiny2").val() == "")
+			{
+				$('.hodiny2o').remove();
+				$('.hodiny2').remove();
+				var p = $("#hodiny2").offset();		
+				tooltipError("Parametr musí být vyplněn!", p.top - $("#hodiny2").height() / 2, p.left + $("#hodiny2").width(), "hodiny2");
+				document.getElementById("hodiny2").style.borderColor='#FF0000';
+				document.getElementById("hodiny").style.borderColor='#FF0000';
+			}
+			
+			else
 			{
 				$('.hodiny2o').remove();
 				$('.hodiny2').remove();
@@ -32,15 +62,50 @@ $(document).ready(function(){
 				tooltipNeerror("OK", p.top - $("#hodiny2").height() / 2, p.left + $("#hodiny2").width(), "hodiny2o");	
 				document.getElementById("hodiny2").style.borderColor='#009900';
 				document.getElementById("hodiny").style.borderColor='#009900';
-			}	
-			/*else
+			}
+	  })
+	  
+	$("#hodiny")
+		.focusout(function() {
+			if ($("#hodiny").val() == "" && $("#hodiny2").val() == "")
 			{
-				$('.tkurtyo').remove();
-				$('.tkurty').remove();
-				var p = $("#kurty").offset();		
-				tooltipError("Parametr musí být vyplněn!", p.top - $("#kurty").height() / 2, p.left + $("#kurty").width(), "tkurty");
-				document.getElementById("kurty").style.borderColor='#FF0000';
-			}*/
+				$('.hodiny2o').remove();
+				$('.hodiny2').remove();
+				var p = $("#hodiny2").offset();		
+				tooltipError("Parametr musí být vyplněn!", p.top - $("#hodiny2").height() / 2, p.left + $("#hodiny2").width(), "hodiny2");
+				document.getElementById("hodiny2").style.borderColor='#FF0000';
+				document.getElementById("hodiny").style.borderColor='#FF0000';
+			}
+				
+			else if ($("#hodiny").val() >= $("#hodiny2").val())
+			{
+				$('.hodiny2o').remove();
+				$('.hodiny2').remove();
+				var p = $("#hodiny2").offset();		
+				tooltipError("Parametr musí být vyplněn!", p.top - $("#hodiny2").height() / 2, p.left + $("#hodiny2").width(), "hodiny2");
+				document.getElementById("hodiny2").style.borderColor='#FF0000';
+				document.getElementById("hodiny").style.borderColor='#FF0000';
+			}
+			
+			else if ($("#hodiny").val() == "" || $("#hodiny2").val() == "")
+			{
+				$('.hodiny2o').remove();
+				$('.hodiny2').remove();
+				var p = $("#hodiny2").offset();		
+				tooltipError("Parametr musí být vyplněn!", p.top - $("#hodiny2").height() / 2, p.left + $("#hodiny2").width(), "hodiny2");
+				document.getElementById("hodiny2").style.borderColor='#FF0000';
+				document.getElementById("hodiny").style.borderColor='#FF0000';
+			}
+			
+			else
+			{
+				$('.hodiny2o').remove();
+				$('.hodiny2').remove();
+				var p = $("#hodiny2").offset();		
+				tooltipNeerror("OK", p.top - $("#hodiny2").height() / 2, p.left + $("#hodiny2").width(), "hodiny2o");	
+				document.getElementById("hodiny2").style.borderColor='#009900';
+				document.getElementById("hodiny").style.borderColor='#009900';
+			}
 	  })
 });
 
@@ -57,7 +122,6 @@ function tooltipError(text, px, py, id)
 
 function tooltipNeerror(text, px, py, id)
 {
-	tooltips.push(id);
 	$('<p class="'+ id +'"></p>')
 	.text(text)
 	.appendTo('body')
@@ -78,6 +142,7 @@ function dalsiKrokKontrola1()
 		document.getElementById("kurty").style.borderColor='#FF0000';
 		
 		$('.tkurty').remove();
+		$('.hodiny2').remove();
 		var p = $("#kurty").offset();		
 		tooltipError("Parametr musí být vyplněn!", p.top - $("#kurty").height() / 2, p.left + $("#kurty").width(), "tkurty");		
 	}
@@ -88,7 +153,7 @@ function dalsiKrokKontrola1()
 	{
 		document.getElementById("hodiny2").style.borderColor='#FF0000';
 		
-		$('.thodiny2').remove();
+		$('.hodiny2').remove();
 		var p3 = $("#hodiny2").offset();		
 		tooltipError("Parametr musí být vyplněn!", p3.top - $("#hodiny2").height() / 2, p3.left + $("#hodiny2").width(), "thodiny2");	
 	}
@@ -96,6 +161,7 @@ function dalsiKrokKontrola1()
 	if (document.getElementById("kurty").value != "" && document.getElementById("hodiny").value != "" && document.getElementById("hodiny2").value != "")
 	{
 		$('.tkurtyo').remove();
+		$('.hodiny2o').remove();
 		document.getElementById("kroktext3").style.display = 'block';
 		document.getElementById("kroktext2").style.display = 'none';	
 	}
@@ -106,10 +172,16 @@ function predchoziKrok(elementID1, elementID2)
 	document.getElementById(elementID2).style.display = 'block';
 	document.getElementById(elementID1).style.display = 'none';	
 	$('.tkurtyo').remove();
+	$('.hodiny2o').remove();
 	
 	if (elementID2 != "kroktext1")
 	{
 		var p = $("#kurty").offset();		
-		tooltipNeerror("OK", p.top - $("#kurty").height() / 2, p.left + $("#kurty").width(), "tkurtyo");		
+		tooltipNeerror("OK", p.top - $("#kurty").height() / 2, p.left + $("#kurty").width(), "tkurtyo");
+		
+		var p = $("#hodiny2").offset();		
+		tooltipNeerror("OK", p.top - $("#hodiny2").height() / 2, p.left + $("#hodiny2").width(), "hodiny2o");	
+		document.getElementById("hodiny2").style.borderColor='#009900';
+		document.getElementById("hodiny").style.borderColor='#009900';		
 	}
 }

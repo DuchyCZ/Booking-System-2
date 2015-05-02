@@ -17,6 +17,8 @@
 </div>
 
 <div id="kroktext2" class="container" style="display:none">
+    <h1>Základní nastavení</h1>
+
     <div class="left">Zadejte počet kurtů:</div>
     <div class="right"><input id="kurty" type="text" maxlength="2" size="2" title="Zadejte rozmezí od 1 do 50"
                               class="masterTooltip">&nbsp;&nbsp;</div>
@@ -29,22 +31,42 @@
     </div>
     <br><br><br>
 
-    <div class="right">
-        <button class="button-next pure-button" onclick="step2()">Další</button>
-    </div>
     <div class="left">
         <button class="pure-button" onclick="step0()">Zrušit</button>
+    </div>
+    <div class="right">
+        <button class="button-next pure-button" onclick="step2()">Další</button>
     </div>
 </div>
 
 <div id="kroktext3" class="container" style="display:none">
-    <p id="text2">Zatim nic</p>
+    <h1>Nastavení databáze</h1>
 
-    <div class="right">
-        <button class="button-next pure-button" onclick="dalsiKrokKontrola2()">Další</button>
-    </div>
+    <div class="left">Host:</div>
+    <div class="right"><input id="SQLHost" type="text" value="localhost"></div>
+    <br>
+
+    <div class="left">Uživatelské jméno:</div>
+    <div class="right"><input id="SQLUsername" type="text" value="root"></div>
+    <br>
+
+    <div class="left">Heslo:</div>
+    <div class="right"><input id="SQLPass" type="password"></div>
+    <br>
+
+    <div class="left">Databáze:</div>
+    <div class="right"><input id="SQLDatabase" type="text"></div>
+    <br>
+
+    <div class="left">Prefix:</div>
+    <div class="right"><input id="SQLPrefix" type="text" value="bosy_"></div>
+    <br><br><br><br>
+
     <div class="left">
         <button class="pure-button" onclick="step1()">Zpět</button>
+    </div>
+    <div class="right">
+        <button class="button-next pure-button" onclick="step3()">Další</button>
     </div>
 </div>
 </body>

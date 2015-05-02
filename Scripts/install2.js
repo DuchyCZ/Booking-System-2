@@ -7,12 +7,13 @@ $(document).ready(function () {
 
     $("#kurty")
         .focusout(function () {
-            var positonKurty = $("#kurty").offset();
-            if ($("#kurty").val() > 0 && $("#kurty").val() < 51) {
-                tooltipUnError("OK", positonKurty.top - $("#kurty").height() / 2, positonKurty.left + $("#kurty").width(), "okparamK");
+            var kurty = $("#kurty");
+            var positonKurty = kurty.offset();
+            if (kurty.val() > 0 && kurty.val() < 51) {
+                tooltipUnError("OK", positonKurty.top - kurty.height() / 2, positonKurty.left + kurty.width(), "okparamK");
             }
             else {
-                tooltipError("Špatný parametr!", positonKurty.top - $("#kurty").height() / 2, positonKurty.left + $("#kurty").width(), "badparamK");
+                tooltipError("Špatný parametr!", positonKurty.top - kurty.height() / 2, positonKurty.left + kurty.width(), "badparamK");
             }
         })
         .focusin(function () {
@@ -22,12 +23,14 @@ $(document).ready(function () {
 
     $("#hodiny")
         .focusout(function () {
-            var positionHodiny2 = $("#hodiny2").offset();
-            if ($("#hodiny").val() > 0 && $("#hodiny").val() < 24 && $("#hodiny2").val() > 1 && $("#hodiny2").val() < 25 && $("#hodiny").val() < $("#hodiny2").val()) {
-                tooltipUnError("OK", positionHodiny2.top - $("#hodiny2").height() / 2, positionHodiny2.left + $("#hodiny2").width(), "okparamH");
+            var hodiny = $("#hodiny");
+            var hodiny2 = $("#hodiny2");
+            var positionHodiny2 = hodiny2.offset();
+            if (hodiny.val() > 0 && hodiny.val() < 24 && hodiny2.val() > 1 && hodiny2.val() < 25 && hodiny.val() < hodiny2.val()) {
+                tooltipUnError("OK", positionHodiny2.top - hodiny2.height() / 2, positionHodiny2.left + hodiny2.width(), "okparamH");
             }
             else {
-                tooltipError("Špatný parametr!", positionHodiny2.top - $("#hodiny2").height() / 2, positionHodiny2.left + $("#hodiny2").width(), "badparamH");
+                tooltipError("Špatný parametr!", positionHodiny2.top - hodiny2.height() / 2, positionHodiny2.left + hodiny2.width(), "badparamH");
             }
         })
         .focusin(function () {
@@ -37,12 +40,14 @@ $(document).ready(function () {
 
     $("#hodiny2")
         .focusout(function () {
-            var positionHodiny2 = $("#hodiny2").offset();
-            if ($("#hodiny").val() > 0 && $("#hodiny").val() < 24 && $("#hodiny2").val() > 1 && $("#hodiny2").val() < 25 && $("#hodiny").val() < $("#hodiny2").val()) {
-                tooltipUnError("OK", positionHodiny2.top - $("#hodiny2").height() / 2, positionHodiny2.left + $("#hodiny2").width(), "okparamH");
+            var hodiny = $("#hodiny");
+            var hodiny2 = $("#hodiny2");
+            var positionHodiny2 = hodiny2.offset();
+            if (hodiny.val() > 0 && hodiny.val() < 24 && hodiny2.val() > 1 && hodiny2.val() < 25 && hodiny.val() < hodiny2.val()) {
+                tooltipUnError("OK", positionHodiny2.top - hodiny2.height() / 2, positionHodiny2.left + hodiny2.width(), "okparamH");
             }
             else {
-                tooltipError("Špatný parametr!", positionHodiny2.top - $("#hodiny2").height() / 2, positionHodiny2.left + $("#hodiny2").width(), "badparamH");
+                tooltipError("Špatný parametr!", positionHodiny2.top - hodiny2.height() / 2, positionHodiny2.left + hodiny2.width(), "badparamH");
             }
         })
         .focusin(function () {
@@ -50,6 +55,10 @@ $(document).ready(function () {
             $('.badparamH').remove();
         })
 });
+
+var pocetKurtu;
+var odHodin;
+var doHodin;
 
 function tooltipFadeOut() {
     $('.okparam').remove();
@@ -87,7 +96,15 @@ function step2() {
         tooltipFadeOut();
         document.getElementById("kroktext2").style.display = 'none';
         document.getElementById("kroktext3").style.display = 'block';
+
+        pocetKurtu = document.getElementById("kurty").value;
+        odHodin = document.getElementById("hodiny").value;
+        doHodin = document.getElementById("hodiny2").value;
     }
+}
+
+function step3() {
+    /*TODO Zkouska pripojeni do databaze*/
 }
 
 function tooltipError(text, positionX, positionY, id) {

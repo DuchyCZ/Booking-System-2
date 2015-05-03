@@ -26,6 +26,8 @@ $(document).ready(function () {
             var hodiny = $("#hodiny");
             var hodiny2 = $("#hodiny2");
             var positionHodiny2 = hodiny2.offset();
+            hodiny.val(pad(hodiny.val(), 2));
+
             if (hodiny.val() > 0 && hodiny.val() < 24 && hodiny2.val() > 1 && hodiny2.val() < 25 && hodiny.val() < hodiny2.val()) {
                 tooltipUnError("OK", positionHodiny2.top - hodiny2.height() / 2, positionHodiny2.left + hodiny2.width(), "okparamH");
             }
@@ -43,6 +45,8 @@ $(document).ready(function () {
             var hodiny = $("#hodiny");
             var hodiny2 = $("#hodiny2");
             var positionHodiny2 = hodiny2.offset();
+            hodiny2.val(pad(hodiny2.val(), 2));
+
             if (hodiny.val() > 0 && hodiny.val() < 24 && hodiny2.val() > 1 && hodiny2.val() < 25 && hodiny.val() < hodiny2.val()) {
                 tooltipUnError("OK", positionHodiny2.top - hodiny2.height() / 2, positionHodiny2.left + hodiny2.width(), "okparamH");
             }
@@ -59,6 +63,11 @@ $(document).ready(function () {
 var pocetKurtu;
 var odHodin;
 var doHodin;
+
+function pad(str, max) {
+    str = str.toString();
+    return str.length < max ? pad("0" + str, max) : str;
+}
 
 function tooltipFadeOut() {
     $('.okparam').remove();
@@ -101,10 +110,6 @@ function step2() {
         odHodin = document.getElementById("hodiny").value;
         doHodin = document.getElementById("hodiny2").value;
     }
-}
-
-function step3() {
-    /*TODO Zkouska pripojeni do databaze*/
 }
 
 function tooltipError(text, positionX, positionY, id) {

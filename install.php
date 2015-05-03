@@ -1,3 +1,23 @@
+<?php
+date_default_timezone_set('Europe/Prague');
+require 'dibi.min.php';
+
+function step3($host, $username, $password, $database, $prefix)
+{
+    dibi::connect(array(
+        'driver' => 'mysql',
+        'host' => $host,
+        'username' => $username,
+        'password' => $password,
+        'database' => $database
+    ));
+}
+
+if (isset($_POST['step3'])) {
+
+}
+
+?>
 <!DOCTYPE html>
 <html>
 <head>
@@ -27,7 +47,8 @@
     <div class="left">Zadejte rozmezí hodin provozu:&nbsp; &nbsp; &nbsp; &nbsp;</div>
     <div class="right"><input id="hodiny" type="text" maxlength="2" size="2" title="Zadejte rozmezí od 00 do 24"
                               class="masterTooltip"> - <input id="hodiny2" type="text" maxlength="2" size="2"
-                                                              title="Zadejte rozmezí od 00 do 24" class="masterTooltip">&nbsp;&nbsp;
+                                                              title="Zadejte rozmezí od 00 do 24"
+                                                              class="masterTooltip">&nbsp;&nbsp;
     </div>
     <br><br><br>
 
@@ -66,7 +87,7 @@
         <button class="pure-button" onclick="step1()">Zpět</button>
     </div>
     <div class="right">
-        <button class="button-next pure-button" onclick="step3()">Další</button>
+        <button type="submit" name="step3" class="button-next pure-button">Test Připojení</button>
     </div>
 </div>
 </body>

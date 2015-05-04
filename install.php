@@ -13,10 +13,6 @@ function step3($host, $username, $password, $database, $prefix)
     ));
 }
 
-if (isset($_POST['step3'])) {
-
-}
-
 ?>
 <!DOCTYPE html>
 <html>
@@ -39,56 +35,70 @@ if (isset($_POST['step3'])) {
 <div id="kroktext2" class="container" style="display:none">
     <h1>Základní nastavení</h1>
 
-    <div class="left">Zadejte počet kurtů:</div>
-    <div class="right"><input id="kurty" type="text" maxlength="2" size="2" title="Zadejte rozmezí od 1 do 50"
-                              class="masterTooltip">&nbsp;&nbsp;</div>
-    <br>
+    <form class="pure-form pure-form-aligned" id="basicOps">
+        <fieldset>
+            <div class="pure-control-group">
+                <label>Počet kurtů</label>
+                <input id="kurty" type="text" maxlength="2" size="2" title="Zadejte rozmezí od 1 do 50"
+                       class="masterTooltip">
+            </div>
 
-    <div class="left">Zadejte rozmezí hodin provozu:&nbsp; &nbsp; &nbsp; &nbsp;</div>
-    <div class="right"><input id="hodiny" type="text" maxlength="2" size="2" title="Zadejte rozmezí od 00 do 24"
-                              class="masterTooltip"> - <input id="hodiny2" type="text" maxlength="2" size="2"
-                                                              title="Zadejte rozmezí od 00 do 24"
-                                                              class="masterTooltip">&nbsp;&nbsp;
-    </div>
-    <br><br><br>
+            <div class="pure-control-group">
+                <label>Provozní hodiny</label>
+                <input id="hodiny" type="text" maxlength="2" size="2" title="Zadejte rozmezí od 00 do 24"
+                       class="masterTooltip"> - <input id="hodiny2" type="text" maxlength="2" size="2"
+                                                       title="Zadejte rozmezí od 00 do 24"
+                                                       class="masterTooltip">
+            </div>
 
-    <div class="left">
-        <button class="pure-button" onclick="step0()">Zrušit</button>
-    </div>
-    <div class="right">
-        <button class="button-next pure-button" onclick="step2()">Další</button>
-    </div>
+            <div class="left">
+                <button class="pure-button" onclick="step0()">Zrušit</button>
+            </div>
+            <div class="right">
+                <button class="button-next pure-button" onclick="step2()">Další</button>
+            </div>
+        </fieldset>
+    </form>
 </div>
 
 <div id="kroktext3" class="container" style="display:none">
     <h1>Nastavení databáze</h1>
 
-    <div class="left">Host:</div>
-    <div class="right"><input id="SQLHost" type="text" value="localhost"></div>
-    <br>
+    <form class="pure-form pure-form-aligned" id="sqlConnect">
+        <fieldset>
+            <div class="pure-control-group">
+                <label>Host</label>
+                <input id="SQLHost" type="text" value="localhost">
+            </div>
 
-    <div class="left">Uživatelské jméno:</div>
-    <div class="right"><input id="SQLUsername" type="text" value="root"></div>
-    <br>
+            <div class="pure-control-group">
+                <label>Uživatelské jméno</label>
+                <input id="SQLUsername" type="text" value="root">
+            </div>
 
-    <div class="left">Heslo:</div>
-    <div class="right"><input id="SQLPass" type="password"></div>
-    <br>
+            <div class="pure-control-group">
+                <label>Heslo</label>
+                <input id="SQLPass" type="password">
+            </div>
 
-    <div class="left">Databáze:</div>
-    <div class="right"><input id="SQLDatabase" type="text"></div>
-    <br>
+            <div class="pure-control-group">
+                <label>Databáze</label>
+                <input id="SQLDatabase" type="text">
+            </div>
 
-    <div class="left">Prefix:</div>
-    <div class="right"><input id="SQLPrefix" type="text" value="bosy_"></div>
-    <br><br><br><br>
+            <div class="pure-control-group">
+                <label>Prefix</label>
+                <input id="SQLPrefix" type="text" value="bosy_">
+            </div>
 
-    <div class="left">
-        <button class="pure-button" onclick="step1()">Zpět</button>
-    </div>
-    <div class="right">
-        <button type="submit" name="step3" class="button-next pure-button">Test Připojení</button>
-    </div>
+            <div class="left">
+                <button class="pure-button" onclick="step1()">Zpět</button>
+            </div>
+            <div class="right">
+                <button type="submit" name="step3" class="submit button-next pure-button">Test Připojení</button>
+            </div>
+        </fieldset>
+    </form>
 </div>
 </body>
 </html>

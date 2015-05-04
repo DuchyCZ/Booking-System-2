@@ -5,21 +5,38 @@ $(document).ready(function () {
     /*$("#kroktext1").toggle(2000);
      $("#kroktext1").toggle(2000);*/
 
+    $("#sqlConnect").submit(function () {
+        sData = $("#SQLDatabase");
+        sHost = $("#SQLHost");
+        sUser = $("#SQLUsername");
+        sPass = $("#SQLPass");
+        sPref = $("#SQLPrefix");
+
+        //alert(sHost.val());
+        return false;
+    });
+
+    $("#basicOps").submit(function () {
+        return false;
+    });
+
     $("#kurty")
         .focusout(function () {
             var kurty = $("#kurty");
             var positonKurty = kurty.offset();
             if (kurty.val() > 0 && kurty.val() < 51) {
-                tooltipUnError("OK", positonKurty.top - kurty.height() / 2, positonKurty.left + kurty.width(), "okparamK");
+                tooltipUnError("OK", positonKurty.top - 2, positonKurty.left + kurty.width() + 13, "okparamK");
+                document.getElementById("kurty").style.borderColor = '#009900';
             }
             else {
-                tooltipError("Špatný parametr!", positonKurty.top - kurty.height() / 2, positonKurty.left + kurty.width(), "badparamK");
+                tooltipError("Špatný parametr!", positonKurty.top - 2, positonKurty.left + kurty.width() + 13, "badparamK");
+                document.getElementById("kurty").style.borderColor = '#D72C2C';
             }
         })
         .focusin(function () {
             $('.okparamK').remove();
             $('.badparamK').remove();
-        })
+        });
 
     $("#hodiny")
         .focusout(function () {
@@ -29,16 +46,20 @@ $(document).ready(function () {
             hodiny.val(pad(hodiny.val(), 2));
 
             if (hodiny.val() > 0 && hodiny.val() < 24 && hodiny2.val() > 1 && hodiny2.val() < 25 && hodiny.val() < hodiny2.val()) {
-                tooltipUnError("OK", positionHodiny2.top - hodiny2.height() / 2, positionHodiny2.left + hodiny2.width(), "okparamH");
+                tooltipUnError("OK", positionHodiny2.top - 2, positionHodiny2.left + hodiny2.width() + 13, "okparamH");
+                document.getElementById("hodiny").style.borderColor = '#009900';
+                document.getElementById("hodiny2").style.borderColor = '#009900';
             }
             else {
-                tooltipError("Špatný parametr!", positionHodiny2.top - hodiny2.height() / 2, positionHodiny2.left + hodiny2.width(), "badparamH");
+                tooltipError("Špatný parametr!", positionHodiny2.top - 2, positionHodiny2.left + hodiny2.width() + 13, "badparamH");
+                document.getElementById("hodiny").style.borderColor = '#D72C2C';
+                document.getElementById("hodiny2").style.borderColor = '#D72C2C';
             }
         })
         .focusin(function () {
             $('.okparamH').remove();
             $('.badparamH').remove();
-        })
+        });
 
     $("#hodiny2")
         .focusout(function () {
@@ -48,21 +69,49 @@ $(document).ready(function () {
             hodiny2.val(pad(hodiny2.val(), 2));
 
             if (hodiny.val() > 0 && hodiny.val() < 24 && hodiny2.val() > 1 && hodiny2.val() < 25 && hodiny.val() < hodiny2.val()) {
-                tooltipUnError("OK", positionHodiny2.top - hodiny2.height() / 2, positionHodiny2.left + hodiny2.width(), "okparamH");
+                tooltipUnError("OK", positionHodiny2.top - 2, positionHodiny2.left + hodiny2.width() + 13, "okparamH");
+                document.getElementById("hodiny2").style.borderColor = '#009900';
+                document.getElementById("hodiny").style.borderColor = '#009900';
             }
             else {
-                tooltipError("Špatný parametr!", positionHodiny2.top - hodiny2.height() / 2, positionHodiny2.left + hodiny2.width(), "badparamH");
+                tooltipError("Špatný parametr!", positionHodiny2.top - 2, positionHodiny2.left + hodiny2.width() + 13, "badparamH");
+                document.getElementById("hodiny2").style.borderColor = '#D72C2C';
+                document.getElementById("hodiny").style.borderColor = '#D72C2C';
             }
         })
         .focusin(function () {
             $('.okparamH').remove();
             $('.badparamH').remove();
-        })
+        });
 });
 
 var pocetKurtu;
 var odHodin;
 var doHodin;
+
+var sData;
+var sHost;
+var sUser;
+var sPass;
+var sPref;
+
+function getCookie(cname) {
+    var name = cname + "=";
+    var ca = document.cookie.split(';');
+    for (var i = 0; i < ca.length; i++) {
+        var c = ca[i];
+        while (c.charAt(0) == ' ') c = c.substring(1);
+        if (c.indexOf(name) == 0) return c.substring(name.length, c.length);
+    }
+    return "";
+}
+
+function setCookie(cname, cvalue, exdays) {
+    var d = new Date();
+    d.setTime(d.getTime() + (exdays * 24 * 60 * 60 * 1000));
+    var expires = "expires=" + d.toGMTString();
+    document.cookie = cname + "=" + cvalue + "; " + expires;
+}
 
 function pad(str, max) {
     str = str.toString();
@@ -88,12 +137,14 @@ function inputControl() {
 }
 
 function step0() {
+    setCookie("step", 0, 1);
     tooltipFadeOut();
     document.getElementById("kroktext1").style.display = 'block';
     document.getElementById("kroktext2").style.display = 'none';
 }
 
 function step1() {
+    setCookie("step", 1, 1);
     tooltipFadeOut();
     document.getElementById("kroktext2").style.display = 'block';
     document.getElementById("kroktext1").style.display = 'none';
@@ -102,6 +153,7 @@ function step1() {
 
 function step2() {
     if (inputControl()) {
+        setCookie("step", 2, 1);
         tooltipFadeOut();
         document.getElementById("kroktext2").style.display = 'none';
         document.getElementById("kroktext3").style.display = 'block';

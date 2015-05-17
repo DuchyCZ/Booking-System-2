@@ -12,7 +12,13 @@ $(document).ready(function () {
         sPass = $("#SQLPass");
         sPref = $("#SQLPrefix");
 
-        //alert(sHost.val());
+        setCookie("sData", sData.toString(), 1);
+        setCookie("sHost", sHost.toString(), 1);
+        setCookie("sUser", sUser.toString(), 1);
+        setCookie("sPass", sPass.toString(), 1);
+        setCookie("sPref", sPref.toString(), 1);
+
+        alert(sHost.val());
         return false;
     });
 

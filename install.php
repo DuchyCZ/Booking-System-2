@@ -2,14 +2,14 @@
 date_default_timezone_set('Europe/Prague');
 require 'dibi.min.php';
 
-function step3($host, $username, $password, $database, $prefix)
+function step3()
 {
     dibi::connect(array(
         'driver' => 'mysql',
-        'host' => $host,
-        'username' => $username,
-        'password' => $password,
-        'database' => $database
+        'host' => $_COOKIE["sHost"],
+        'username' => $_COOKIE["sUser"],
+        'password' => $_COOKIE["sPass"],
+        'database' => $_COOKIE["sData"]
     ));
 }
 
@@ -95,7 +95,9 @@ function step3($host, $username, $password, $database, $prefix)
                 <button class="pure-button" onclick="step1()">Zpět</button>
             </div>
             <div class="right">
-                <button type="submit" name="step3" class="submit button-next pure-button">Test Připojení</button>
+                <button type="submit" name="step3" class="submit button-next pure-button" ">
+                    Test Připojení
+                </button>
             </div>
         </fieldset>
     </form>

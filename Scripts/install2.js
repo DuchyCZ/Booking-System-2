@@ -11,18 +11,24 @@ $(document).ready(function () {
         sUser = $("#SQLUsername");
         sPass = $("#SQLPass");
         sPref = $("#SQLPrefix");
-
-        setCookie("sData", sData.toString(), 1);
-        setCookie("sHost", sHost.toString(), 1);
-        setCookie("sUser", sUser.toString(), 1);
-        setCookie("sPass", sPass.toString(), 1);
-        setCookie("sPref", sPref.toString(), 1);
-
-        alert(sHost.val());
-        return false;
+        if (noRefresh == true) {
+            return false;
+        }
+        noRefresh = false;
+        return true;
     });
 
-    $("#basicOps").submit(function () {
+    $("#adminOption").submit(function () {
+        if (noRefresh == true) {
+            return false;
+        }
+        noRefresh = false;
+        return true;
+        /*TODO Ulozeni promennych admin stuff*/
+    });
+
+    $("#courtSettings").submit(function () {
+        /*TODO Ulozeni promennych kurt stuff*/
         return false;
     });
 
@@ -91,15 +97,17 @@ $(document).ready(function () {
         });
 });
 
-var pocetKurtu;
-var odHodin;
-var doHodin;
+var courtNum;
+var sinceH;
+var toH;
 
 var sData;
 var sHost;
 var sUser;
 var sPass;
 var sPref;
+
+var noRefresh;
 
 function getCookie(cname) {
     var name = cname + "=";
@@ -149,25 +157,44 @@ function step0() {
     document.getElementById("kroktext2").style.display = 'none';
 }
 
-function step1() {
+function step1($number) {
+    noRefresh = false;
     setCookie("step", 1, 1);
     tooltipFadeOut();
     document.getElementById("kroktext2").style.display = 'block';
     document.getElementById("kroktext1").style.display = 'none';
     document.getElementById("kroktext3").style.display = 'none';
+    if ($number == 1) {
+        noRefresh = true;
+        document.getElementById("errorText").style.display = 'none';
+    }
 }
 
 function step2() {
+    noRefresh = false;
     if (inputControl()) {
         setCookie("step", 2, 1);
         tooltipFadeOut();
         document.getElementById("kroktext2").style.display = 'none';
         document.getElementById("kroktext3").style.display = 'block';
 
-        pocetKurtu = document.getElementById("kurty").value;
-        odHodin = document.getElementById("hodiny").value;
-        doHodin = document.getElementById("hodiny2").value;
+        courtNum = document.getElementById("kurty").value;
+        sinceH = document.getElementById("hodiny").value;
+        toH = document.getElementById("hodiny2").value;
     }
+}
+
+function step3($number) {
+    noRefresh = false;
+    document.getElementById("kroktext4").style.display = 'none';
+    document.getElementById("kroktext3").style.display = 'block';
+    if ($number == 1) {
+        noRefresh = true;
+    }
+}
+
+function step4() {
+    window.location.replace('...');
 }
 
 function tooltipError(text, positionX, positionY, id) {
